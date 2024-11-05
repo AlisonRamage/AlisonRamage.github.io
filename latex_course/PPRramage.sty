@@ -1,0 +1,77 @@
+\NeedsTeXFormat{LaTeX2e}[1995/12/01]
+% this is based on the PPRhigham file of Nick Higham
+\ProvidesPackage{PPRramage}[2005/10/13]
+\typeout{`ramage' style for Prosper ---}
+
+\RequirePackage{amssymb,color}
+
+\newgray{grayb}{.5}
+
+\FontText{%
+  \black\usefont{T1}{phv}{m}{n}\fontsize{12.4pt}{12pt}\selectfont}{%
+  \black\usefont{T1}{phv}{m}{n}\fontsize{12.4pt}{12pt}\selectfont}
+
+\FontTitle{%
+  \usefont{T1}{phv}{b}{n}\fontsize{16pt}{18pt}\selectfont\blue}{%
+  \usefont{T1}{phv}{b}{n}\fontsize{16pt}{18pt}\selectfont\blue}
+
+\NewSlideStyle[115mm]{t}{5.3,3.2}{}
+
+% Positioning of the title of a slide.
+\newcommand{\slidetitle}[1]{%
+  \rput[c](5.25,4.4){\fontTitle{#1}}
+}
+
+% Positioning for a logo
+\LogoPosition{-1,-1.1}
+
+% Definition of this style for slides.
+
+\newcommand{\BasicFrame}[1]{%
+\psline[linewidth=.5pt,linecolor=grayb](-1,0)(-1,-0.6)(-0.4,-0.6)
+\psline[linewidth=.5pt,linecolor=grayb](11,-0.6)(11.6,-0.6)(11.6,0)
+\psline[linewidth=.5pt,linecolor=grayb](-1,6.7)(-1,7.3)(-0.4,7.3)
+\psline[linewidth=.5pt,linecolor=grayb](11.6,6.7)(11.6,7.3)(11,7.3)
+  \PutLogo % Mandatory
+ {#1}}
+
+\PDFCroppingBox{10 40 594 800}
+\RequirePackage{semhelv}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\def\red{\color{red}}
+\def\blue{\color{blue}}
+\def\green{\color{green}}
+\def\orange{\color{orange}}
+\def\magenta{\color{magenta}}
+
+\definecolor{orange}{rgb}{1,0.25,0.5}
+\definecolor{magenta}{rgb}{.75,0,.75}
+\definecolor{green}{rgb}{0,0.65,0}
+\def\about#1{\centerline{\color{blue}\textbf{#1}}}
+
+% Make label in descriptions coloured.  Copied from article.cls.
+\renewcommand*\descriptionlabel[1]{\hspace\labelsep
+                                %\green#1}
+                                \green\textbf{#1}}
+
+\newenvironment{mylist}[1][black]{\begin{list}{\textcolor{#1}{$\blacktriangleright$}}{}}{\end{list}}
+\newenvironment{mylist1}[1][black]{\begin{list}{\textcolor{#1}{$\bullet$}}{}}{\end{list}}
+\newenvironment{mylist2}[1][black]{\begin{list}{\textcolor{#1}{\rule{2mm}{2mm}}}{}}{\end{list}}
+\newenvironment{mylist3}[1][red]{\begin{list}{\textcolor{#1}{$\bigstar$}}{}}{\end{list}}
+
+% From jeep.sty
+\def\symbolnote#1#2{\let\@thefootn=\thefootnote%
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}%
+\footnotemark[#1]%
+\footnotetext[#1]{#2}%
+\let\thefootnote=\@thefootn
+}
+% Define symboleqn environment to make a displayed equation with
+% a symbolic equation label.
+\newenvironment{symboleqn}[1]{
+   \def\@savesymbol{#1}$$}{\eqno \@savesymbol $$\global\@ignoretrue}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5%%%%%%%%%%%%%%%%%

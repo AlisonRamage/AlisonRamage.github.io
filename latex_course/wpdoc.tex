@@ -1,0 +1,142 @@
+% A comment line in your .tex file must start with a percent sign
+% PREAMBLE
+% this is the minimum necessary in the preamble
+\documentclass[12pt]{article}
+
+% PAGE SPECIFICATIONS
+% these are optional (otherwise default values will be used)
+\setlength{\textheight}{24.0cm}
+\setlength{\topmargin}{-1.0cm}
+
+% SETTING NEW ABBREVIATIONS
+% to change the definition of an existing command
+\renewcommand{\theequation}{\thesection.\arabic{equation}}
+% to add your own new command
+\newcommand{\fe}{finite element }
+
+% TITLE INFORMATION
+\title{On Preconditioning for Finite Element Equations
+ on Irregular Grids}
+\author{Alison Ramage 
+        \thanks{Department of Mathematics, University of Strathclyde,
+        Glasgow G1 1XH, United Kingdom.}}
+% this will print today's date
+\date{\today}
+
+% DOCUMENT BODY
+\begin{document}
+
+% PRINTING TITLE 
+\maketitle
+
+% ABSTRACT
+\begin{abstract}
+Preconditioning methods are widely used in conjunction with the
+conjugate gradient method for solving large sparse symmetric linear systems
+arising from the discretisation of self-adjoint linear elliptic
+partial differential equations.
+\end{abstract}
+
+% SECTION 1
+\section{Introduction}
+\setcounter{equation}{0}
+When faced with choosing a method for 
+solving a partial differential 
+equation on an                      irregular domain, one 
+              possibility is certainly the 
+finite element method which has many attractive approximation properties
+(see e.g.\ \cite{SF73}). Other choices would be
+\begin{itemize}
+\item use finite differences
+\item give up and go home.
+\end{itemize}
+ As with other numerical methods for solving 
+partial differential equations, using the finite element method involves
+some form of \textbf{discretisation} of the problem domain. 
+In the light of such observations,\\ we 
+consider the general topic of % all this is ignored!!!!!
+solving finite element equations with particular reference to 
+producing  pretty papers.
+
+% SECTION 2
+\section{Eigenvalue bounds}
+\setcounter{equation}{0}
+\subsection{Analysis}
+In order to analyse irregular grids we introduce lots of equations
+so we can number them. Suppose that the \fe
+grid contains numbered elements $e=1,\ldots,E$ with $V_e$
+local unknowns on each element, giving a total of $N$
+global unknowns. The coefficient matrix
+$A$ can be written as
+\begin{equation}
+\label{assembly}
+A=L^T[A_e]L\hspace{1cm}\mbox{for any matrix}\,\,A
+\end{equation}
+where $[A_e]$ represents an $[E.V_e \times E.V_e]$ block 
+diagonal matrix whose $[V_e \times V_e]$ diagonal blocks
+are the element-calculated coefficient matrices. We can now use
+(\ref{assembly}) later.
+\subsection{Result}
+A useful result not contained in  Wathen \cite{W88} is that
+ if $\{ B_e \}$ is any
+set of $[V_e \times V_e]$ symmetric positive definite
+matrices and a preconditioner $B$ is formed from
+\begin{displaymath}
+B=\left(\frac{a^2+b^2-c}{\theta \alpha}\right)
+\frac{\partial x}{\partial t}\hat{\alpha}{\underline v}
+\hspace{2cm}\forall\hat{\alpha}\in[0,1]
+\end{displaymath}
+then the eigenvalues of the global matrix $B^{-1}A$ must
+satisfy
+\begin{equation}
+\label{ebound}
+    \min_e{\lambda_{\min}(B_e^{-1}A_e)}
+    \leq \lambda (B^{-1}A) \leq
+    \max_e{\lambda_{\max}(B_e^{-1}A_e)}.
+\end{equation}
+
+% SECTION 3
+\section{Conclusion}
+\setcounter{equation}{0}
+This is a load of rubbish, and the phrase 
+\begin{center}
+``Why bother?'' 
+\end{center}
+comes to mind. We list the reasons why here:\\
+\begin{enumerate}
+\item To enhance the education of the human race.
+\item To avoid getting the sack.
+\end{enumerate}
+
+% APPENDIX
+\appendix
+\section{Appendix}
+\setcounter{equation}{0}
+In this case the stiffness matrix is 
+\begin{equation}
+    K_e=\frac{1}{4S_e}
+    \left[ 
+    \begin{array}{ccc}
+    a & -b & b-a \\
+    -b & c & b-c \\
+    b-a & b-c & a-2b+c  
+    \end{array} 
+    \right]
+\end{equation}
+where $S_e$ is the element area, $a=y_2^2$, $b=y_1y_2$ and 
+$c=x_1^2+y_1^2$.
+
+% BIBLIOGRAPHY (number in {} is maximum number of entries allowed)
+\begin{thebibliography}{99}
+\bibitem{SF73}{\sc G. Strang and G.J. Fix,}
+	\textit{An Analysis of the Finite Element Method,}
+        Prentice-Hall, 1973.
+\bibitem{W88}{\sc A.J. Wathen,}
+	\textit{Spectral Bounds and Preconditioning Methods,}
+         {MAFELAP VI (1987),} 
+        {J.R. Whiteman, ed.,
+         Academic Press, 1988, pp. 157-168.}
+\end{thebibliography}
+
+% THE END!
+\end{document}

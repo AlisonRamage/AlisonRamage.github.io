@@ -1,0 +1,875 @@
+\documentclass[pdf,ramage]{prosper} 
+\usepackage{color}
+\usepackage{theorem}
+\usepackage{fancybox}
+
+\newcommand{\bc}{\begin{center}}
+\newcommand{\ec}{\end{center}}
+\newcommand{\bd}{\begin{displaymath}}
+\newcommand{\ed}{\end{displaymath}}
+\newcommand{\bi}{\begin{itemize}}
+\newcommand{\ei}{\end{itemize}}
+\newcommand{\vs}{\vspace}
+\newcommand{\va}{{\bf a}}
+\newcommand{\vb}{{\bf b}}
+\newcommand{\ve}{{\bf e}}
+\newcommand{\vf}{{\bf f}}
+\newcommand{\vp}{{\bf p}}
+\newcommand{\vr}{{\bf r}}
+\newcommand{\vu}{{\bf u}}
+\newcommand{\vv}{{\bf v}}
+\newcommand{\vw}{{\bf w}}
+\newcommand{\vx}{{\bf x}}
+\newcommand{\vX}{{\bf X}}
+\newcommand{\vy}{{\bf y}}
+\newcommand{\vze}{{\bf 0}}
+\newcommand{\bs}{$\backslash$}
+\newcommand{\blank}{\begin{slide}{}\end{slide}}
+\newcommand{\lx}{{\LaTeX} }
+
+
+\slideCaption{SMSTC 2007}
+
+\newenvironment{myslide}[1]{\begin{slide}{#1}}{\end{slide}}
+% NB: no use adjusting \slidetitle: that doesn't obviate neg. \vspace.
+\def\mynormal{\vspace*{-0.5cm}}
+\def\mysmall{\small\vspace*{-0.5cm}}
+\def\myfoot{\footnotesize\vspace*{-0.5cm}}
+\def\myscript{\scriptsize\vspace*{-0.5cm}}
+
+% This modified from seminar.cls, where it sets it to 1.2:
+\def\slidearraystretch{1}
+
+%%%%%%%%%%%%%%%%%
+\def\red{\color{red}}
+\def\blue{\color{blue}}
+\def\green{\color{green}}
+\def\orange{\color{orange}}
+\def\magenta{\color{magenta}}
+
+\definecolor{orange}{rgb}{1,0.25,0.5}
+\definecolor{magenta}{rgb}{.75,0,.75}
+\definecolor{green}{rgb}{0,0.65,0}
+% \newcommand{\about}[1]{\centerline{\color{blue}\textbf{#1}}}
+ 
+% % Make label in descriptions coloured.  Copied from article.cls.
+% \renewcommand*\descriptionlabel[1]{\hspace\labelsep
+%                                 \normalfont\bfseries\green#1}
+ 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\def\bordermatcolleft#1#2#3#4#5{% dims then entries, both top to bottom
+\bordermatrix{   & \SS #1 \cr
+      \SS\hfil   #2 & #4  \cr
+         \SS     #3 & #5  \cr}}
+ 
+\def\bordermatcolright#1#2#3#4#5{% dims then entries, both top to bottom
+\begin{array}[b]{c@{}c}
+\SS #1 & \\
+\left[\begin{array}{@{}c@{}} #4 \\ #5 \\ \end{array}\right] &
+\begin{array}{c}\SS #2 \\ \SS #3 \\\end{array}
+\end{array}}
+
+\def\bordermatcolrightthree#1#2#3#4#5#6#7{% dims then entries, both top to bottom
+\begin{array}[b]{c@{}c}
+\SS #1 & \\
+\left[\begin{array}{@{}c@{}} #5 \\ #6 \\ #7 \\ \end{array}\right] &
+\begin{array}{c}\SS #2 \\ \SS #3 \\ \SS #4 \\\end{array}
+\end{array}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\def\mytitle{
+\textcolor{blue}{An Introduction to \lx  }}
+\title{\mytitle}
+\author{Alison Ramage}
+\institution{University of Strathclyde}
+
+\begin{document}
+\begin{slide}{}
+\vspace*{-1cm}
+\begin{center}
+\shadowbox{
+\begin{minipage}{4in}
+\begin{center}
+\fontTitle{\mytitle}
+\end{center}
+\end{minipage}
+}
+\vspace{0.6cm}
+
+\bigskip
+\parbox{5cm}{\bc
+Alison Ramage\\
+Dept of Mathematics\\
+University of Strathclyde\\
+Glasgow, Scotland\ec}
+\parbox{5cm}{\bc
+\scalebox{0.8}{\includegraphics{logo_global.eps}}\\
+\ec}
+\vspace{0.6cm}
+\end{center}
+\begin{mylist1}[blue]
+\item
+\textcolor{green}{
+{\em \lx: A Document Preparation System}}\\
+Lamport, Addison-Wesley 1994 
+\item
+\textcolor{green}{
+{\em Learning \lx}}\\
+ Griffiths and  Higham, SIAM 1997
+\item 
+\textcolor{green}{
+{\em The \lx Companion}}\\
+Mittelbach and Goossens, Addison-Wesley 2004
+\end{mylist1}
+
+\end{slide}
+
+\overlays{7}{
+\begin{slide}{Basics}
+\mynormal
+\medskip
+\begin{mylist1}[blue]
+\item based on the \textcolor{green}{\TeX}\, program by Don Knuth\\
+\medskip
+ \fromSlide{2}{
+\item \textcolor{green}{\lx} written by Leslie Lamport specifically for maths
+\begin{quotation}
+\textcolor{red}{
+``a house built with wood and nails of \TeX''
+}
+\end{quotation}
+}
+\medskip
+ \fromSlide{3}{
+\item \textcolor{green}{typesetting} package (not \textcolor{red}{WYSIWYG})
+ }
+\medskip
+\fromSlide{4}{
+\item cross-references and citations done \textcolor{green}{automatically}
+}
+\medskip
+\fromSlide{5}{
+\item convenient for electronic publication
+}
+\medskip
+\fromSlide{6}{
+\item \textcolor{green}{public domain} software (i.e.\ \textcolor{red}{free}!)
+}
+\end{mylist1}
+\fromSlide{7}{
+\bc
+\textcolor{red}{
+``Although you can format an equation almost any way you want with \lx, you have
+to work harder to do it wrong.''
+}
+\ec
+}
+\end{slide}
+}
+\overlays{7}{
+\begin{slide}{Overview}
+\mynormal
+%\medskip
+\bc
+create a \lx .tex file\\
+\textcolor{blue}{kepler\$}
+\textcolor{green}{emacs doc.tex}
+\ec
+\fromSlide{2}{
+\begin{center}
+\scalebox{0.1}{\includegraphics{downarrow.eps}}
+\end{center}
+\bc
+process the .tex file\\
+\textcolor{blue}{kepler\$}
+\textcolor{green}{latex doc}
+\ec
+}
+\fromSlide{3}{
+\vspace{-2cm}
+\begin{flushright}
+\scalebox{0.1}{\includegraphics{uparrow.eps}}
+\parbox{3cm}{\textcolor{red}{correct any\\ \lx  errors}}
+\end{flushright}
+}
+\fromSlide{4}{
+\vspace{0.8cm}
+\begin{center}
+\scalebox{0.1}{\includegraphics{downarrow.eps}}
+\end{center}
+\bc
+preview the .dvi file\\
+\textcolor{blue}{kepler\$}
+\textcolor{green}{xdvi doc}
+\ec
+}
+\fromSlide{5}{
+\vspace{-4cm}
+\begin{flushleft}
+\hspace*{1.2cm}\scalebox{0.1}{\includegraphics{uparrow.eps}}
+\end{flushleft}
+\begin{flushleft}
+\parbox{3cm}{\bc\textcolor{red}{correct any\\ style, layout,\\content errors}\ec}
+\end{flushleft}
+\begin{flushleft}
+\hspace*{1.2cm}\scalebox{0.1}{\includegraphics{uparrow.eps}}
+\end{flushleft}
+}
+\fromSlide{6}{
+\vspace{1cm}
+\begin{center}
+\scalebox{0.1}{\includegraphics{downarrow.eps}}
+\end{center}
+\bc
+convert the .dvi file to PostScript\\
+\textcolor{blue}{kepler\$}
+\textcolor{green}{dvips doc}
+\ec
+}
+\fromSlide{7}{
+\begin{center}
+\scalebox{0.1}{\includegraphics{downarrow.eps}}
+\end{center}
+\bc
+print the .ps file\\
+\textcolor{blue}{kepler\$}
+\textcolor{green}{lpr doc.ps}
+\ec
+}
+\end{slide}
+}
+
+\overlays{3}{
+\begin{slide}{Observations}
+\mynormal
+\medskip
+\begin{mylist1}[blue]
+%\item A \lx file must have the extension \textcolor{green}{.tex}
+\fromSlide{1}{
+\item If you are using internal references, you may get the message
+\begin{flushleft}
+\texttt{LaTeX Warning: Label(s) may have changed.
+Rerun to get cross-references right.}
+\end{flushleft}
+You must then \textcolor{red}{recompile} the file by using the \textcolor{green}{latex} command
+again.
+}
+\fromSlide{2}{
+\item The \textcolor{green}{previewing} stage is very important: printing is
+\textcolor{red}{expensive}!
+}
+\fromSlide{3}{
+\item The \textcolor{green}{dvips} command can be used to print selected pages,
+e.g.
+\bc
+\textcolor{blue}{kepler\$}
+\textcolor{green}{dvips -p29 -l34 thesis}
+\ec
+prints pages 29-34 of the document thesis.dvi.
+}
+\end{mylist1}
+\end{slide}
+}
+
+\overlays{4}{
+\begin{slide}{In your .tex file}
+\mynormal
+\medskip
+\begin{mylist1}[blue]
+\item\textcolor{red}{ALL} \lx commands begin with a \,\,
+$\textcolor{green}{\backslash}$\,\,
+and are case-sensitive.
+\fromSlide{2}{
+\item Special characters:
+\bc
+\textcolor{green}{
+\% $\ast$ \$ \& \_ \{ \} \~{} \^{} $\backslash$}
+\ec
+will be interpreted as \lx control characters.
+}
+\fromSlide{3}{
+\item \textcolor{green}{\%} acts as a `comment' symbol: anything on the line
+after a \textcolor{green}{\%} sign is ignored.
+}
+\fromSlide{4}{
+\item Some commands have \textcolor{green}{arguments}:
+
+\begin{center}
+enclosed in \textcolor{red}{$\{\,\,\}$}: \textcolor{green}{compulsory}\\
+\end{center}
+\begin{center}
+enclosed in \textcolor{red}{$[\,\,]$}: \textcolor{green}{optional}\\
+\end{center}
+}
+\end{mylist1}
+\end{slide}
+}
+
+\begin{slide}{Document structure}
+\mynormal
+\medskip
+Each document has two parts:
+
+\begin{mylist1}[blue]
+\item \textcolor{red}{PREAMBLE}\\
+This sets up the document style, type size, 
+page settings etc. The first line must be
+\begin{verbatim}
+\documentclass{STYLE}
+\end{verbatim}
+where STYLE is one of
+\begin{mylist1}[red]
+\item \textcolor{green}{article} (includes sections and subsections)
+\item                \textcolor{green}{report}  (includes chapters)
+    \item            \textcolor{green}{book}    (includes volumes)
+        \item        \textcolor{green}{letter}
+            \item    \textcolor{green}{slides}
+\item \textcolor{green}{\ldots}
+\end{mylist1}
+\end{mylist1}
+\end{slide}
+
+\overlays{4}{
+\begin{slide}{Preamble (cont.)}
+
+\mynormal
+\medskip
+The {preamble} may also contain 
+\begin{mylist1}[red]
+\item commands which define page size, margins etc,
+e.g.
+
+{\tt
+$\backslash$setlength\{$\backslash$textheight\}\{18.0cm\}\\
+$\backslash$setlength\{$\backslash$topmargin\}\{1.2in\}\\
+$\backslash$pagestyle\{empty\}\\ }
+\fromSlide{2}{
+\item inclusion of any \textcolor{green}{packages}, e.g.
+
+{\tt 
+$\backslash$usepackage\{amssymb\}\\ }
+}
+\fromSlide{3}{
+\item user-defined \textcolor{green}{new commands}, e.g.
+
+{\tt 
+$\backslash$newcommand\{$\backslash$fe\}\{finite element method\}\\ }
+}
+\fromSlide{4}{
+\item user-defined \textcolor{green}{changes} to default style, e.g.
+
+{\tt 
+$\backslash$renewcommand\{$\backslash$baselinestretch\}\{1.5\}\\ }
+}
+\end{mylist1}
+\end{slide}
+}
+
+\overlays{2}{
+\begin{slide}{Document structure (cont.)}
+\mynormal
+\medskip
+\begin{mylist1}[blue]
+\item \textcolor{red}{DOCUMENT BODY}\\
+This contains the \textcolor{green}{\lx} commands to produce the document text.\\
+\medskip
+{\tt
+$\backslash$begin\{document\}             \\
+THE DOCUMENT TEXT GOES HERE.\\
+$\backslash$end\{document\}\\
+}
+\medskip
+\fromSlide{2}{
+\begin{mylist1}[red]
+\item 
+A document can be \textcolor{green}{subdivided} using\\
+\medskip
+
+{\tt
+$\backslash$chapter\{...\}\\
+$\backslash$section\{...\}\\
+$\backslash$subsection\{...\}\\
+$\backslash$subsubsection\{...\}\\
+$\backslash$Appendix
+}
+\end{mylist1}
+}
+\end{mylist1}
+\end{slide}
+}
+
+\begin{slide}{Document structure (cont.)}
+\mynormal
+\medskip
+\begin{mylist1}[red]
+\item 
+Separate \LaTeX \,\,input files can be \textcolor{green}{included} using\\
+\medskip
+{\tt
+$\backslash$input\{\textit{filename}\}}\\
+\medskip
+\item 
+A \textcolor{green}{table of contents} can be included using\\
+\medskip
+{\tt
+$\backslash$tableofcontents}\\
+\bigskip
+\bigskip
+Sample document body:\\
+\bigskip
+{\tt
+$\backslash$tableofcontents\\
+$\backslash$newpage\\
+ $\backslash$input\{chapter1\}\\
+$\backslash$newpage\\
+ $\backslash$input\{chapter2\}\\
+}
+\end{mylist1}
+\end{slide}
+
+
+\overlays{3}{
+\begin{slide}{SUMMARY}
+\mynormal
+\medskip
+\begin{mylist1}[blue]
+\item A valid \lx  document:\\
+\medskip
+{\tt
+$\backslash$documentclass\{article\}\\
+$\backslash$begin\{document\}\\
+This is my first document.\\
+$\backslash$end\{document\}\\}
+\end{mylist1}
+\bigskip
+\fromSlide{2}{
+\bc
+\textcolor{green}{This is all you need, but\ldots}
+\ec
+}
+\fromSlide{3}{
+\bc
+\textcolor{green}{\ldots hopefully your thesis will be a little more
+sophisticated!}
+\ec
+}
+\end{slide}
+}
+\overlays{3}{
+\begin{slide}{Document style}
+\mynormal
+\begin{mylist1}[red]
+\item A \textcolor{green}{title} can be created with
+{\tt $\backslash$maketitle} which uses
+\bc
+{\tt\bs title\{...\}\qquad
+\bs author\{...\}\qquad
+\bs date\{\bs today\} }
+\ec
+\medskip
+\fromSlide{2}{
+\item Varying text \textcolor{green}{font}:
+\bc
+\textit{\bs textit\{...\}}\qquad
+\textsc{\bs textsc\{...\}}\qquad 
+\textsf{\bs textsf\{...\}}\\
+\textbf{\bs textbf\{...\}}\qquad 
+\texttt{\bs texttt\{...\}}
+\ec
+}
+\medskip
+\fromSlide{3}{
+\item Varying text \textcolor{green}{size}:
+\bc{\tt
+\tiny \bs tiny\qquad \scriptsize\bs scriptsize\qquad \footnotesize\bs footnotesize\qquad 
+\normalsize \bs normalsize \qquad
+\large \bs large\qquad 
+\Large \bs Large\qquad \LARGE \bs LARGE\qquad \huge \bs huge\qquad \Huge\bs Huge}
+\ec
+}
+\end{mylist1}
+\end{slide}
+}
+
+\begin{slide}{Some useful \lx concepts (1)}
+\mynormal
+\medskip
+\begin{mylist1}[blue]
+\item \textcolor{green}{environments}
+\begin{verbatim}
+\begin{center}...\end{center}
+\begin{itemize}...\end{itemize}
+\begin{enumerate}...\end{enumerate}
+\begin{description}...\end{description}
+\begin{tabbing}...\end{tabbing}
+\begin{tabular}...\end{tabular}
+\begin{table}...\end{table}
+\begin{figure}...\end{figure}
+\begin{quote}...\end{quote}
+\begin{verse}...\end{verse}
+\end{verbatim}
+\end{mylist1}
+\end{slide}
+
+\overlays{2}{
+\begin{slide}{Some useful \lx concepts (2)}
+\mynormal
+\medskip
+\begin{mylist1}[blue]
+\item \textcolor{green}{math mode}\\
+
+All mathematics must be typeset in \textcolor{green}{math mode}. This can be done 
+using \textcolor{red}{dollar signs} \textcolor{green}{\$...\$}, e.g.
+\bc
+{\tt Let \$x\$ be a real number.}\\
+\medskip
+ Let $x$ be a real number.
+\ec
+\medskip
+\fromSlide{2}{
+\item \textcolor{green}{environments in math mode}\\
+\bc
+\tt
+$\backslash$begin\{displaymath\}...$\backslash$end\{displaymath\}\\
+$\backslash$begin\{equation\}...$\backslash$end\{equation\}\\
+$\backslash$begin\{array\}...$\backslash$end\{array\}\\
+$\backslash$begin\{eqnarray\}...$\backslash$end\{eqnarray\}\\
+$\backslash$begin\{eqnarray$\ast$\}...$\backslash$end\{eqnarray$\ast$\}\\
+\ec
+}
+\end{mylist1}
+\end{slide}
+}
+
+
+\overlays{4}{
+\begin{slide}{Examples of maths commands (1)}
+\mynormal
+\begin{mylist1}[blue]
+\item \textcolor{green}{maths fonts}:
+\bc
+$\mathcal{A}$\qquad
+$\mathrm{A}$\qquad
+$\mathit{A}$\qquad
+$\mathsf{A}$\qquad
+$\mathbf{A}$\qquad
+$\mathtt{A}$\\
+{\tt
+{\bs mathcal\{A\}},
+{\bs mathrm\{A\}},
+{\bs mathit\{A\}},\\
+{\bs mathsf\{A\}},
+{\bs mathbf\{A\}},
+{\bs mathtt\{A\}}}
+\ec
+\fromSlide{2}{
+\medskip
+\item \textcolor{green}{Greek letters}:\qquad
+$\alpha,\quad\beta, \quad \gamma, \quad\Gamma, \quad\sigma, \quad\Sigma$
+\bc
+{\tt
+\bs alpha,\bs beta,\bs gamma,\bs Gamma,\bs sigma,\bs Sigma
+}
+\ec
+}
+\fromSlide{3}{
+\medskip
+\item \textcolor{green}{symbols}:\qquad
+$\ne,\quad\Leftrightarrow,\quad\in ,\quad\sim,\quad\nabla$
+\bc
+{\tt
+\bs ne,\bs Leftrightarrow,\bs in,\bs sim,\bs nabla
+}
+\ec
+}
+\fromSlide{4}{
+\medskip
+\item \textcolor{green}{variable-sized symbols}:\qquad
+$\int,\quad\oint,\quad\sum,\quad\left[,\quad\right]$
+\bc
+{\tt 
+\bs int,\quad\bs oint,\quad\bs sum,\quad\bs left[, \quad\bs right]}
+\ec
+}
+\end{mylist1}
+\end{slide}
+}
+\overlays{2}{
+\begin{slide}{Examples of maths commands (2)}
+\mynormal
+\medskip
+\begin{mylist1}[blue]
+\item \textcolor{green}{subscripts} and \textcolor{green}{superscripts}:\qquad
+\bd
+x_1,\quad y_{ij},\quad z^{n+1},\quad\lim_{x\rightarrow -1},\quad \int_1^\infty
+\ed
+\bc
+{\tt x\_1,\quad y\_\{ij\},\quad z\^{}\{n+1\},\\
+\quad\bs lim\_\{x\bs rightarrow -1\},\quad \bs int\_1\^{}\bs infty }
+\ec
+\bigskip
+\fromSlide{2}{
+\item \textcolor{green}{fractions}:
+\bd
+x=\frac{3+\sin{t}}{t^2},\qquad y=\frac{\partial x}{\partial t}
+\ed
+\bc
+{\tt
+x=\bs frac\{3+\bs sin\{t\}\}\{t\^{}2\}\\ y=\bs frac\{\bs partial x\}\{\bs partial t\}}
+\ec
+}
+\end{mylist1}
+\end{slide}
+}
+\overlays{2}{
+\begin{slide}{Arranging formulae}
+\mynormal
+\medskip
+\begin{mylist1}[blue]
+\item \textcolor{green}{arrays}:\qquad
+$A=\left[\begin{array}{ccc}
+1 & 1 & 1\\
+x & y & z\\
+x^2 & y^2 & z^2
+\end{array}\right]$\\
+\bigskip
+{\tt
+A=\bs left[\bs begin\{array\}\{ccc\}\\
+1 \& 1 \& 1\bs \bs  x \& y \& z\bs \bs x\^{}2 \& y\^{}2 \& z\^{}2\\
+ \bs end\{array\} \bs right]
+}
+\fromSlide{2}{
+\medskip
+\item \textcolor{green}{equation arrays}:
+\vspace{-0.5cm}
+\begin{eqnarray}
+x&=&17+p^2-3p^5\\
+y&=&\alpha -\theta\nonumber
+\end{eqnarray}
+{\tt \bs begin\{eqnarray\}\\
+x\&=\&17+p\^{}2-3p\^{}5\bs \bs \\
+y\&=\&\bs alpha - \bs theta\bs nonumber\\
+\bs end\{eqnarray\}}
+}
+\end{mylist1}
+\end{slide}
+}
+\begin{slide}{A simple table}
+\mynormal
+\medskip
+\begin{center}
+\begin{tabular}{||l||c|c|c|c|c|c|}
+\hline
+Team & Played & W & D & L & Goals & Points\\\hline\hline
+Aberdeen & 2 & 2 & 0 & 0 & +10 & 6\\\hline
+Celtic & 2 & 0 & 1 & 1& -5 & 1 \\\hline
+Rangers & 2 & 0 & 1 & 1& -5 & 1 \\\hline
+\end{tabular}
+\end{center}
+\medskip
+\begin{verbatim}
+\begin{center}
+\begin{tabular}{||l||c|c|c|c|c|c|}
+\hline
+Team & Played & W & D & L & Goals & Points\\
+\hline\hline
+Aberdeen & 2 & 2 & 0 & 0 & +10 & 6\\\hline
+Celtic & 2 & 0 & 1 & 1& -5 & 1 \\\hline
+Rangers & 2 & 0 & 1 & 1& -5 & 1 \\\hline
+\end{tabular}
+\end{center}
+\end{verbatim}
+\end{slide}
+
+\overlays{2}{
+\begin{slide}{Cross-referencing}
+\mynormal
+\medskip
+\lx can \textcolor{red}{automatically} number equations, references etc
+\begin{mylist1}[blue]
+\medskip
+\item to label an equation: \qquad\textcolor{green}{\tt \bs label\{...\}}\\
+\begin{equation}
+x=1
+\label{eq1}
+\end{equation}
+{\tt
+\bs begin\{equation\}\\
+\textcolor{green}{\bs label\{eq1\}}\\
+x=1\\
+\bs end\{equation\}}
+\fromSlide{2}{
+\medskip
+\item to refer to a label:\qquad\textcolor{green}{\tt \bs ref\{...\}}\\
+\medskip
+\bc
+Using equation (\ref{eq1}), we see that\ldots
+\ec
+{\tt
+Using equation (\textcolor{green}{\bs ref\{eq1\}}), we see that\ldots
+}
+}
+\end{mylist1}
+\end{slide}
+}
+\overlays{4}{
+\begin{slide}{Citing reference texts}
+\mynormal
+\medskip
+\begin{mylist1}[blue]
+\item  bibliography:\\
+\medskip
+{\tt
+\textcolor{green}{
+\bs begin\{thebibliography\}\{99\}}\\
+BIBLIOGRAPHY ITEMS\\
+\textcolor{green}{
+\bs end\{thebibliography\}}
+}
+\fromSlide{2}{
+\medskip
+\item sample bibliography entry:\\
+\medskip{\tt
+\textcolor{green}{
+\bs bibitem\{Ramage04\} \{\\
+\textcolor{red}{A. Ramage, Famous Book, OUP, 2004.}\\
+\textcolor{green}{\}}\\
+} }}
+\medskip
+\fromSlide{3}{
+\item to refer to a reference text:\qquad\textcolor{green}{\tt \bs cite\{...\}}\\
+\medskip
+{\tt In \textcolor{green}{\bs cite\{Ramage04\}} we see that \ldots} }
+\fromSlide{4}{
+\medskip
+\item fancier methods available, e.g. \textcolor{red}{bibtex}
+}
+\end{mylist1}
+\end{slide}
+}
+\overlays{3}{
+\begin{slide}{Including pictures}
+\mynormal
+\begin{mylist1}[blue]
+\item most commonly,  plots are in \textcolor{green}{PostScript} (.ps) or
+\textcolor{green}{Encapsulated PostScript} (.eps) files
+\fromSlide{2}{
+\item many packages available, e.g. 
+\textcolor{green}{psfig}, \textcolor{green}{epsf} etc
+}
+\fromSlide{3}{
+\item \textsc{Example}
+\begin{mylist1}[red]
+\item in preamble:\\
+\texttt{\bs usepackage[dvips]\{graphics\}}
+\item in text:\\
+{\tt \bs begin\{figure\}[ht]\\
+\bs begin\{center\}\\
+\bs scalebox\{0.3\}\{\bs includegraphics\{fig.eps\}\}\\ 
+\bs end\{center\}\\
+\bs caption\{An example of including a picture.   \bs label\{fig1\}\}\\
+\bs end\{figure\}}
+\end{mylist1}
+}
+\end{mylist1}
+\end{slide}
+}
+\overlays{2}{
+\begin{slide}{Slides and presentations}
+\mynormal
+\medskip
+\begin{mylist1}[blue]
+\item \textcolor{green}{slides} document style
+\bc
+{\tt \bs documentclass\{slides\} }
+\ec
+\bc
+{\tt \bs begin\{slide\}...\bs end\{slide\}}
+\ec
+\fromSlide{2}{
+\bigskip
+\item many more sophisticated packages available, e.g.
+\medskip
+\bc
+\textcolor{red}{prosper}
+\ec
+\bc
+{\tt http://prosper.sourceforge.net}
+\ec
+\bc
+{\tt http://www.ma.man.ac.uk/$\sim$mheil/Prosper/}
+\ec
+}
+\end{mylist1}
+\end{slide}
+}
+\overlays{1}{
+\begin{slide}{Packages and style files}
+\mynormal
+\medskip
+\begin{mylist1}[blue]
+\item \textcolor{green}{.sty}, \textcolor{green}{.cls} files available from many
+sources:
+\bigskip
+\begin{mylist1}[red]
+\item colleagues and fellow students
+\medskip
+\item publishers, e.g. 
+\textcolor{green}{siamltex},
+\textcolor{green}{elsart}
+\medskip
+\item American Mathematical Society, e.g.
+\textcolor{green}{amsfonts},
+\textcolor{green}{amsmath},
+\textcolor{green}{amssymb}
+\bc
+\textcolor{red}{
+$\mathbb{R}$, $\mathbb{Z}$, $\mathbb{C}$\\
+{\tt \$\bs mathbb\{R\}\$,
+\$\bs mathbb\{Z\}\$,
+\$\bs mathbb\{C\}\$}}
+\ec
+\medskip
+\item UK\TeX\,\,  archive\qquad {\tt http://www.tex.ac.uk}
+\medskip
+\item Google search!
+\end{mylist1}
+\end{mylist1}
+\end{slide}
+}
+\overlays{1}{
+\begin{slide}{Support Material}
+
+Available from:\\
+
+\bigskip
+
+\begin{tabbing}
+xxxxxxxxxxxxxxxxxxxxxxx\= \kill
+\texttt{http://www.maths.strath.ac.uk}\\
+\>\texttt{/$\sim$caas63/latex\_course}
+\end{tabbing}
+
+\bigskip
+\bigskip
+\bigskip
+
+\begin{tabbing}
+xxxxxxxxxxxxxxxxxxxxxxxxxxxx\= \kill
+\textcolor{green}{$\bullet$} \lx notes \>  
+\texttt{wpnotes.tex}\\
+\textcolor{green}{$\bullet$} sample file \>  
+\texttt{wpdoc.tex}\\
+\textcolor{green}{$\bullet$} sample figure \>  
+\texttt{fig1.eps}\\
+\textcolor{green}{$\bullet$} slides from this talk \>  
+\texttt{latex\_talk.tex}\\
+\textcolor{green}{$\bullet$} Prosper document class \> 
+\texttt{prosper.cls}\\
+\textcolor{green}{$\bullet$} sample Prosper style file \> 
+\texttt{PPRramage.sty}\\
+\end{tabbing}
+
+\end{slide}
+}
+\end{document}
