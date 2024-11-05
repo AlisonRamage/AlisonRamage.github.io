@@ -1,0 +1,92 @@
+\documentclass[12pt]{article}
+\pagestyle{empty}
+\usepackage[dvips]{graphics}
+\usepackage{amssymb}
+\usepackage{lscape}
+\setlength{\textheight}{24.0cm}
+\setlength{\textwidth}{16.5cm}
+\setlength{\parindent}{0.0cm}
+\setlength{\topmargin}{-2.0cm}
+\setlength{\oddsidemargin}{-0.5cm}
+
+\begin{document}
+\begin{center}
+{\large An Introduction to \LaTeX : practical exercises}
+\end{center}
+\begin{enumerate}
+\item Go to the webpage
+\begin{center}
+\texttt{https://alisonramage.github.io/latex\_course/}
+\end{center}
+and copy the files \texttt{LaTeXnotes.tex, fig1.png}  and \texttt{wpdoc.tex}
+ to your own filespace.
+
+\item Start \texttt{TeXworks} from the Windows menu. Open the 
+files LaTeXnotes.tex and wpdoc.tex using \texttt{TeXworks} and process them
+to create PDF files of the course notes and sample document. 
+
+\item Create a new \LaTeX\, document as shown on the slide, and view the 
+resulting document on the screen. (When you LaTeX a new document for the first 
+time in \texttt{TeXworks}, you will be asked to save it using a new name.)
+
+\item Edit your \LaTeX\, document from part 3 so that it reproduces the text 
+below. (Note: the LaTeX command to produce the typset \LaTeX\, name is 
+\verb+\LaTeX+.)\\
+\rule{16cm}{0.01cm}
+\medskip
+
+This is my first document in \LaTeX! I am very \textit{excited} 
+about it, so I want to 
+\begin{center}
+\textbf{shout out loud}.
+\end{center}
+
+\bigskip
+\item Add the piece of mathematics below to your document.\\
+\rule{16cm}{0.01cm}
+
+Find $x$ and $y$ such that
+\begin{displaymath}
+\sin{x}+\cos{y}=\frac{3(\pi+1)}{25^2}
+\end{displaymath}
+with $x\ne 0$ and $y>5$.
+
+\bigskip
+\item Add a title and author to your document (you can use the commands in 
+wpdoc.tex as a template).
+
+\bigskip
+\item Edit your document so that the equation above has a number, then add the 
+reference sentence and citation.\\
+\rule{16cm}{0.01cm}
+
+
+Find $x$ and $y$ such that
+\begin{equation}
+\sin{x}+\cos{y}=\frac{3(\pi+1)}{25^2}
+\label{eq1}
+\end{equation}
+with $x\ne 0$ and $y>5$. Equation (\ref{eq1}) can be used to show that $x>0$ 
+\cite{faketext}.
+\begin{thebibliography}{99}
+\bibitem{faketext}{\textsc{A. Author}, \textit{Mathematics Text}, 
+\textbf{Strathclyde Publishing}, 2016.}
+\end{thebibliography}
+
+\end{enumerate}
+\newpage
+\begin{center}
+\fbox{\large An Introduction to \LaTeX: Course Assignment}
+\end{center}
+Imagine that you are applying for follow-up funding for your PhD studies. 
+Use \LaTeX\, to prepare a two-page document to support your application. 
+This should comprise
+\begin{itemize}
+\item a one-page CV, listing  your qualifications and achievements to date;
+\item a brief description of your PhD project, with a summary of progress and a 
+timeline of the key milestones to come.
+\end{itemize}
+Try to make your document more attractive to read by including lists and
+tabbing (to line up the material in columns) where appropriate, and varying the 
+fonts and textsize.
+\end{document}

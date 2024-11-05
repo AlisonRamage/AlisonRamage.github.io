@@ -1,0 +1,814 @@
+\documentclass{beamer}
+%\documentclass[handout]{beamer}
+\usepackage[latin1]{inputenc}
+\usetheme{Warsaw}
+
+\usepackage{color}
+\usepackage{theorem}
+\usepackage{fancybox}
+\usepackage{listings}
+\newcommand{\bc}{\begin{center}}
+\newcommand{\ec}{\end{center}}
+\newcommand{\bd}{\begin{displaymath}}
+\newcommand{\ed}{\end{displaymath}}
+\newcommand{\bi}{\begin{itemize}}
+\newcommand{\ei}{\end{itemize}}
+\newcommand{\lx}{{\LaTeX} }
+\newcommand{\bs}{$\backslash$}
+\def\mynormal{\vspace*{-0.5cm}}
+
+\title[An Introduction to \lx]
+{An Introduction to \lx
+}
+\author{Dr Alison Ramage, \texttt{A.Ramage@strath.ac.uk}}
+\institute{Dept of Mathematics and Statistics, LT10.11 Livingstone Tower}
+\date{}
+\begin{document}
+%%%%%%%%%%%%%%%
+\begin{frame}
+\titlepage
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{References}
+\begin{itemize}
+\item
+\textcolor{blue}{
+{\em Learning \lx}}\\
+Griffiths and  Higham, SIAM 2016\\
+(second edition)\\
+\medskip
+\item
+\textcolor{blue}{
+{\em \lx: A Document Preparation System}}\\
+Lamport, Addison-Wesley 1994 \\
+\medskip
+
+\item 
+\textcolor{blue}{
+{\em The \lx Companion}}\\
+Mittelbach and Goossens, Addison-Wesley 2004\\
+
+\medskip
+\item A wealth of internet sources!
+\end{itemize}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Basics}
+\mynormal
+\medskip
+\begin{itemize}
+\item \textcolor{blue}{typesetting} package (not \textcolor{red}{WYSIWYG})
+\medskip
+\item based on the \textcolor{blue}{\TeX}\, program by Don Knuth (Stanford, 
+1978)\\
+\medskip
+\item \textcolor{blue}{\lx} written by Leslie Lamport specifically for maths
+\end{itemize}
+\begin{quotation}
+\textcolor{red}{
+``a house built with wood and nails of \TeX''
+}
+\end{quotation}
+\begin{itemize}
+\pause
+\item cross-references and citations done \textcolor{blue}{automatically}
+\medskip
+\item convenient for electronic publication
+\medskip
+\item \textcolor{blue}{public domain} software (i.e.\ \textcolor{red}{free}!)
+\end{itemize}
+\pause
+\bc
+\textcolor{red}{
+``Although you can format an equation almost any way you want with \lx, you have
+to work harder to do it wrong.''}
+\ec
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Running \lx}
+%\mynormal
+\bi
+\item First \textcolor{red}{create a file} containing \lx commands, then 
+\textcolor{red}{compile} it to process the commands.
+\pause
+\medskip
+\item Can be run from the command line or a \textcolor{blue}{Command Prompt} 
+window.
+\medskip
+\pause
+\item Usual to use a customised \lx User `front end'.
+Examples:
+\bi
+\item \textcolor{blue}{\texttt{TeXworks}} (for Windows operating systems) with
+\textcolor{blue}{MiK\TeX};
+\item \textcolor{blue}{\texttt{kile}} (for Mac OS X and Linux operating 
+systems);
+\item \textcolor{blue}{\texttt{overleaf}} (online at 
+\texttt{https://www.overleaf.com/}).
+\ei
+\medskip
+\pause
+\item All have many options which can be customised to your preferences 
+once you have some experience.
+\medskip
+\pause
+\item In this course we will use \textcolor{blue}{\texttt{TeXworks}}.
+\medskip
+\pause
+\item May need to configure PS or PDF viewing options for local 
+architecture.
+\ei
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Overview}
+\mynormal
+\medskip
+\bc
+create a \lx .tex file\\
+\textcolor{blue}{doc.tex}
+\ec
+\vspace{-0.5cm}
+\begin{center}
+\scalebox{0.1}{\includegraphics{downarrow.eps}}
+\end{center}
+\vspace{-0.8cm}
+\bc
+process the .tex file\\
+\textcolor{blue}{LaTeX button}
+\ec
+\vspace{-2.0cm}
+\begin{flushright}
+\scalebox{0.1}{\includegraphics{uparrow.eps}}
+\parbox{3cm}{\textcolor{red}{correct any\\ \lx  errors}}
+\end{flushright}
+\vspace{0.1cm}
+\begin{center}
+\scalebox{0.1}{\includegraphics{downarrow.eps}}
+\end{center}
+\vspace{-0.7cm}
+\bc
+preview the .dvi file\\
+\textcolor{blue}{ViewDVI button}
+\ec
+\vspace{-3.8cm}
+\begin{flushleft}
+\hspace*{1.2cm}\scalebox{0.1}{\includegraphics{uparrow.eps}}
+\end{flushleft}
+\begin{flushleft}
+\parbox{3cm}{\bc\textcolor{red}{correct any\\ style, layout,\\content 
+errors}\ec}
+\end{flushleft}
+\begin{flushleft}
+\hspace*{1.2cm}\scalebox{0.1}{\includegraphics{uparrow.eps}}
+\end{flushleft}
+\vspace{-1cm}
+\begin{center}
+\scalebox{0.1}{\includegraphics{downarrow.eps}}
+\end{center}
+\vspace{-0.7cm}
+\bc
+convert the .dvi file for printing\\
+\textcolor{blue}{DVItoPS or DVItoPDF button}
+\ec
+\begin{center}
+\scalebox{0.1}{\includegraphics{downarrow.eps}}
+\end{center}
+\vspace{-0.7cm}
+\bc
+view and print the .ps or .pdf file\\
+\textcolor{blue}{ViewDVI or ViewPDF button}
+\ec
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Notes}
+\mynormal
+\medskip
+\begin{itemize}
+%\item A \lx file must have the extension \textcolor{blue}{.tex}
+\item If you are using internal references, you may get the message
+\begin{flushleft}
+\texttt{LaTeX Warning: Label(s) may have changed.
+Rerun to get cross-references right.}
+\end{flushleft}
+You must then \textcolor{red}{recompile} the file by clicking the 
+\textcolor{blue}{LaTeX} button again.
+\pause
+\medskip
+\item Several different ways of producing a PDF file:
+\bi
+\item use the \textcolor{blue}{LaTeX} button then 
+\textcolor{blue}{DVItoPDF};
+\item use the \textcolor{blue}{PDFLaTeX} button to compile the file and 
+produce a PDF file directly;
+\item use the \textcolor{blue}{LaTeX} button then \textcolor{blue}{DVItoPS} 
+followed by \textcolor{blue}{PStoPDF}.
+\ei
+\pause
+\medskip
+\item The \textcolor{blue}{previewing} stage is very important: printing is
+\textcolor{red}{expensive}!
+
+\end{itemize}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{TeXworks Overview}
+\mynormal
+\medskip
+\begin{enumerate}
+\item Load or create a file containing \lx commands. 
+\begin{itemize}
+\item The file must have suffix \texttt{.tex}.
+\end{itemize}
+\bigskip
+\pause
+\item Process the .tex file to convert it to a PDF file.
+\begin{itemize}
+\item Choose \textcolor{red}{pdfLaTeX} from the left-hand drop-down menu, then 
+press the \textcolor{red}{green arrow} next to it.
+\end{itemize}
+\bigskip
+\pause
+%\item For the first time with a new file, you will have to supply a \textcolor{red}{filename} and save location.
+%\bigskip
+%\pause
+\item If there are no errors, a PDF file will appear containing your document.
+\bigskip
+\pause
+\item If there is an error in your file, press the \textcolor{red}{red cross} button to cancel the process, correct the file 
+and try again.
+\end{enumerate}
+\begin{flushright}
+\framebox{Exercises 1 and 2}
+\end{flushright}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{In your .tex file}
+\mynormal
+\medskip
+\begin{itemize}
+\pause
+\item\textcolor{red}{ALL} \lx commands begin with a \,\,
+$\textcolor{blue}{\backslash}$\,\,
+and are case-sensitive.
+\pause
+\item Special characters:
+\bc
+\textcolor{blue}{
+\% $\ast$ \$ \& \_ \{ \} \~{} \^{} $\backslash$}
+\ec
+will be interpreted as \lx control characters.
+\pause
+\item \textcolor{blue}{\%} acts as a `comment' symbol: anything on the line
+after a \textcolor{blue}{\%} sign is ignored.
+\pause
+\item Some commands have \textcolor{blue}{arguments}:
+
+\begin{center}
+enclosed in \textcolor{red}{$\{\,\,\}$}: \textcolor{blue}{compulsory}\\
+\end{center}
+\begin{center}
+enclosed in \textcolor{red}{$[\,\,]$}: \textcolor{blue}{optional}\\
+\end{center}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Document structure}
+\mynormal
+\medskip
+Each document has two parts:
+
+\begin{itemize}
+\item \textcolor{red}{PREAMBLE}\\
+This sets up the document class, type size, 
+page settings etc. The first line must be
+
+\begin{center}
+\textcolor{blue}{\texttt{$\backslash$documentclass\{STYLE\}}}
+\end{center}
+
+where STYLE is one of
+\begin{itemize}
+\item \textcolor{blue}{article} (includes sections and subsections)
+\item                \textcolor{blue}{report}  (includes chapters)
+    \item            \textcolor{blue}{book}    (includes volumes)
+        \item        \textcolor{blue}{letter}
+            \item    \textcolor{blue}{beamer} (for slides)
+            \item    \textcolor{blue}{a0poster} (for posters)
+\item \textcolor{blue}{\ldots}
+\end{itemize}
+\end{itemize}
+\end{frame}
+\begin{frame}{Preamble (cont.)}
+
+\mynormal
+\medskip
+The {preamble} may also contain 
+\begin{itemize}
+\item commands which define page size, margins etc,
+e.g.
+
+{\tt
+$\backslash$setlength\{$\backslash$textheight\}\{18.0cm\}\\
+$\backslash$setlength\{$\backslash$topmargin\}\{1.2in\}\\
+$\backslash$pagestyle\{empty\}\\ }
+\pause
+\item inclusion of any \textcolor{blue}{packages}, e.g.
+
+{\tt 
+$\backslash$usepackage\{amssymb\}\\ }
+\pause
+\item user-defined \textcolor{blue}{new commands}, e.g.
+
+{\tt 
+$\backslash$newcommand\{$\backslash$fe\}\{finite element method\}\\ }
+\pause
+\item user-defined \textcolor{blue}{changes} to default style, e.g.
+
+{\tt 
+$\backslash$renewcommand\{$\backslash$baselinestretch\}\{1.5\}\\ }
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Document structure (cont.)}
+\mynormal
+\medskip
+\begin{itemize}
+\item \textcolor{red}{DOCUMENT BODY}\\
+This contains the \textcolor{blue}{\lx} commands to produce the document 
+text.\\
+\medskip
+{\tt
+$\backslash$begin\{document\}             \\
+THE DOCUMENT TEXT GOES HERE.\\
+$\backslash$end\{document\}\\
+}
+\medskip
+\pause
+\begin{itemize}
+\item 
+A document can be \textcolor{blue}{subdivided} using\\
+\medskip
+
+{\tt
+$\backslash$chapter\{...\}\\
+$\backslash$section\{...\}\\
+$\backslash$subsection\{...\}\\
+$\backslash$subsubsection\{...\}\\
+$\backslash$Appendix
+}
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Document structure (cont.)}
+\mynormal
+\medskip
+\begin{itemize}
+\item 
+Separate \LaTeX \,\,input files can be \textcolor{blue}{included} using\\
+\medskip
+{\tt
+$\backslash$input\{\textit{filename}\}}\\
+\medskip
+\item 
+A \textcolor{blue}{table of contents} can be included using\\
+\medskip
+{\tt
+$\backslash$tableofcontents}\\
+\bigskip
+\bigskip
+Sample document body:\\
+\bigskip
+{\tt
+$\backslash$tableofcontents\\
+$\backslash$newpage\\
+ $\backslash$input\{chapter1\}\\
+$\backslash$newpage\\
+ $\backslash$input\{chapter2\}\\
+}
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{SUMMARY}
+\mynormal
+\medskip
+\begin{itemize}
+\item A valid \lx  document:\\
+\medskip
+{\tt
+$\backslash$documentclass\{article\}\\
+$\backslash$begin\{document\}\\
+This is my first document.\\
+$\backslash$end\{document\}\\}
+\end{itemize}
+\bigskip
+\pause
+\bc
+\textcolor{blue}{This is all you need, but\ldots}
+\ec
+\pause
+\bc
+\textcolor{blue}{\ldots hopefully your documents will be a little more
+sophisticated!}
+\ec
+\begin{flushright}
+\framebox{Exercise 3}
+\end{flushright}
+\end{frame}
+\begin{frame}{Document style}
+\mynormal
+\begin{itemize}
+\item A \textcolor{blue}{title} can be created with
+{\tt $\backslash$maketitle} which uses
+\bc
+{\tt\bs title\{...\}\qquad
+\bs author\{...\}\qquad
+\bs date\{\bs today\} }
+\ec
+\medskip
+\pause
+\item Varying text \textcolor{blue}{font}:
+\bc
+\textit{\bs textit\{...\}}\qquad
+\textsc{\bs textsc\{...\}}\qquad 
+\textsf{\bs textsf\{...\}}\\
+\textbf{\bs textbf\{...\}}\qquad 
+\texttt{\bs texttt\{...\}}
+\ec
+\medskip
+\pause
+\item Varying text \textcolor{blue}{size}:
+\bc{\tt
+\tiny \bs tiny\qquad \scriptsize\bs scriptsize\qquad \footnotesize\bs 
+footnotesize\qquad 
+\normalsize \bs normalsize \qquad
+\large \bs large\qquad 
+\Large \bs Large\qquad \LARGE \bs LARGE\qquad \huge \bs huge\qquad \Huge\bs 
+Huge}
+\ec
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Some useful \lx concepts (1)}
+\mynormal
+\medskip
+\begin{itemize}
+\item \textcolor{blue}{environments}
+\end{itemize}
+\begin{lstlisting}
+\begin{center}...\end{center}
+\begin{itemize}...\end{itemize}
+\begin{enumerate}...\end{enumerate}
+\begin{description}...\end{description}
+\begin{tabbing}...\end{tabbing}
+\begin{tabular}...\end{tabular}
+\begin{table}...\end{table}
+\begin{figure}...\end{figure}
+\begin{quote}...\end{quote}
+\begin{verse}...\end{verse}
+\end{lstlisting}
+\begin{flushright}
+\framebox{Exercise 4}
+\end{flushright}
+\end{frame}
+
+\begin{frame}{Some useful \lx concepts (2)}
+\mynormal
+\medskip
+\begin{itemize}
+\item \textcolor{blue}{math mode}\\
+
+All mathematics must be typeset in \textcolor{blue}{math mode}. This can be 
+done 
+using \textcolor{red}{dollar signs} \textcolor{blue}{\$...\$}, e.g.
+\bc
+{\tt Let \$x\$ be a real number.}\\
+\medskip
+ Let $x$ be a real number.
+\ec
+\medskip
+\pause
+\item \textcolor{blue}{environments in math mode}\\
+\bc
+\tt
+$\backslash$begin\{displaymath\}...$\backslash$end\{displaymath\}\\
+$\backslash$begin\{equation\}...$\backslash$end\{equation\}\\
+$\backslash$begin\{array\}...$\backslash$end\{array\}\\
+$\backslash$begin\{eqnarray\}...$\backslash$end\{eqnarray\}\\
+$\backslash$begin\{eqnarray$\ast$\}...$\backslash$end\{eqnarray$\ast$\}\\
+\ec
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Examples of maths commands (1)}
+\mynormal
+\begin{itemize}
+\item \textcolor{blue}{maths fonts}:
+\bc
+$\mathcal{A}$\qquad
+$\mathrm{A}$\qquad
+$\mathit{A}$\qquad
+$\mathsf{A}$\qquad
+$\mathbf{A}$\qquad
+$\mathtt{A}$\\
+{\tt
+{\bs mathcal\{A\}},
+{\bs mathrm\{A\}},
+{\bs mathit\{A\}},\\
+{\bs mathsf\{A\}},
+{\bs mathbf\{A\}},
+{\bs mathtt\{A\}}}
+\ec
+\pause
+\medskip
+\item \textcolor{blue}{Greek letters}:\qquad
+$\alpha,\quad\beta, \quad \gamma, \quad\Gamma, \quad\sigma, \quad\Sigma$
+\bc
+{\tt
+\bs alpha,\bs beta,\bs gamma,\bs Gamma,\bs sigma,\bs Sigma
+}
+\ec
+\pause
+\medskip
+\item \textcolor{blue}{symbols}:\qquad
+$\ne,\quad\Leftrightarrow,\quad\in ,\quad\sim,\quad\nabla,\quad\partial$
+\bc
+{\tt
+\bs ne,\bs Leftrightarrow,\bs in,\bs sim,\bs nabla,\bs partial
+}
+\ec
+\pause
+\medskip
+\item \textcolor{blue}{variable-sized symbols}:\qquad
+$\int,\quad\oint,\quad\sum,\quad\left[,\quad\right]$
+\bc
+{\tt 
+\bs int,\quad\bs oint,\quad\bs sum,\quad\bs left[, \quad\bs right]}
+\ec
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Examples of maths commands (2)}
+\mynormal
+\medskip
+\begin{itemize}
+\item \textcolor{blue}{subscripts} and \textcolor{blue}{superscripts}:\qquad
+\bd
+x_1,\quad y_{ij},\quad z^{n+1},\quad\lim_{x\rightarrow -1},\quad \int_1^\infty
+\ed
+\bc
+{\tt x\_1,\quad y\_\{ij\},\quad z\^{}\{n+1\},\\
+\quad\bs lim\_\{x\bs rightarrow -1\},\quad \bs int\_1\^{}\bs infty }
+\ec
+\bigskip
+\pause
+\item \textcolor{blue}{fractions}:
+\bd
+x=\frac{3+\sin{t}}{t^2},\qquad y=\frac{\partial x}{\partial t}
+\ed
+\bc
+{\tt
+x=\bs frac\{3+\bs sin\{t\}\}\{t\^{}2\}\\ y=\bs frac\{\bs partial x\}\{\bs 
+partial t\}}
+\ec
+\end{itemize}
+\end{frame}
+\begin{frame}{Arranging formulae}
+\mynormal
+\medskip
+\begin{itemize}
+\item \textcolor{blue}{arrays}:\qquad
+$A=\left[\begin{array}{ccc}
+1 & 1 & 1\\
+x & y & z\\
+x^2 & y^2 & z^2
+\end{array}\right]$\\
+\bigskip
+{\tt
+A=\bs left[\bs begin\{array\}\{ccc\}\\
+1 \& 1 \& 1\bs \bs  x \& y \& z\bs \bs x\^{}2 \& y\^{}2 \& z\^{}2\\
+ \bs end\{array\} \bs right]
+}
+\pause
+\medskip
+\item \textcolor{blue}{equation arrays}:
+\vspace{-0.5cm}
+\begin{eqnarray}
+x&=&17+p^2-3p^5\\
+y&=&\alpha -\theta\nonumber
+\end{eqnarray}
+{\tt \bs begin\{eqnarray\}\\
+x\&=\&17+p\^{}2-3p\^{}5\bs \bs \\
+y\&=\&\bs alpha - \bs theta\bs nonumber\\
+\bs end\{eqnarray\}}
+\end{itemize}
+\end{frame}
+\begin{frame}[fragile]{A simple table}
+\mynormal
+\bigskip
+\begin{center}
+\begin{tabular}{||l||c|c|c|c|c|c|}
+\hline
+Team & Played & W & D & L & Goals & Points\\\hline\hline
+Aberdeen & 2 & 2 & 0 & 0 & +10 & 6\\\hline
+Celtic & 2 & 0 & 1 & 1& -5 & 1 \\\hline
+Rangers & 2 & 0 & 1 & 1& -5 & 1 \\\hline
+\end{tabular}
+\end{center}
+\begin{lstlisting}
+\begin{center}
+\begin{tabular}{||l||c|c|c|c|c|c|}
+\hline
+Team & Played & W & D & L & Goals & Points\\
+\hline\hline
+Aberdeen & 2 & 2 & 0 & 0 & +10 & 6\\\hline
+Celtic & 2 & 0 & 1 & 1& -5 & 1 \\\hline
+Rangers & 2 & 0 & 1 & 1& -5 & 1 \\\hline
+\end{tabular}
+\end{center}
+\end{lstlisting}
+\begin{flushright}
+\framebox{Exercise 5}
+\end{flushright}
+\end{frame}
+
+\begin{frame}{Cross-referencing}
+\mynormal
+\medskip
+\lx can \textcolor{red}{automatically} number equations, references etc
+\begin{itemize}
+\medskip
+\item to label an equation: \qquad\textcolor{blue}{\tt \bs label\{...\}}\\
+\begin{equation}
+x=1
+\label{eq1}
+\end{equation}
+{\tt
+\bs begin\{equation\}\\
+\textcolor{blue}{\bs label\{eq1\}}\\
+x=1\\
+\bs end\{equation\}}
+\pause
+\medskip
+\item to refer to a label:\qquad\textcolor{blue}{\tt \bs ref\{...\}}\\
+\medskip
+\bc
+Using equation (\ref{eq1}), we see that\ldots
+\ec
+{\tt
+Using equation (\textcolor{blue}{\bs ref\{eq1\}}), we see that\ldots
+}
+\end{itemize}
+\end{frame}
+\begin{frame}{Citing reference texts}
+\mynormal
+\medskip
+\begin{itemize}
+\item  bibliography:\\
+\medskip
+{\tt
+\textcolor{blue}{
+\bs begin\{thebibliography\}\{99\}}\\
+BIBLIOGRAPHY ITEMS\\
+\textcolor{blue}{
+\bs end\{thebibliography\}}
+}
+\pause
+\medskip
+\item sample bibliography entry:\\
+\medskip{\tt
+\textcolor{blue}{
+\bs bibitem\{Ramage04\} \{\\
+\textcolor{red}{A. Ramage, Famous Book, OUP, 2004.}\\
+\textcolor{blue}{\}}\\
+} }
+\medskip
+\pause
+\item to refer to a reference text:\qquad\textcolor{blue}{\tt \bs 
+cite\{...\}}\\
+\medskip
+{\tt In \textcolor{blue}{\bs cite\{Ramage04\}} we see that \ldots} 
+\pause
+\medskip
+\item fancier methods available, e.g. \textcolor{red}{bibtex}
+\end{itemize}
+\end{frame}
+\begin{frame}{Including pictures}
+\mynormal
+\begin{itemize}
+\item plots can be in a number of formats, e.g., \textcolor{blue}{PostScript} (.ps),
+\textcolor{blue}{Encapsulated PostScript} (.eps), \textcolor{blue}{Portable Network Graphics} (.png), etc.
+\pause
+\item many different packages available, e.g. 
+\textcolor{blue}{psfig}, \textcolor{blue}{epsf} etc
+\pause
+\item \textsc{Example}
+\begin{itemize}
+\item in preamble:\\
+\texttt{\bs usepackage\{graphicx\}}
+\item in text:\\
+{\tt \bs begin\{figure\}[ht]\\
+\bs begin\{center\}\\
+\bs scalebox\{0.3\}\{\bs includegraphics\{fig.png\}\}\\ 
+\bs end\{center\}\\
+\bs caption\{An example of including a picture.   \bs label\{fig1\}\}\\
+\bs end\{figure\}}
+\end{itemize}
+\item use \textcolor{blue}{scalebox} to change the size of the picture
+\end{itemize}
+\end{frame}
+\begin{frame}{Packages and style files}
+\mynormal
+\medskip
+\begin{itemize}
+\item \textcolor{blue}{.sty}, \textcolor{blue}{.cls} files available from many
+sources:
+\bigskip
+\begin{itemize}
+\item colleagues and fellow students
+\medskip
+\item publishers, e.g. 
+\textcolor{blue}{siamltex},
+\textcolor{blue}{elsart}
+\medskip
+\item American Mathematical Society, e.g.
+\textcolor{blue}{amsfonts},
+\textcolor{blue}{amsmath},
+\textcolor{blue}{amssymb}
+\bc
+\textcolor{red}{
+$\mathbb{R}$, $\mathbb{Z}$, $\mathbb{C}$\\
+{\tt \$\bs mathbb\{R\}\$,
+\$\bs mathbb\{Z\}\$,
+\$\bs mathbb\{C\}\$}}
+\ec
+\medskip
+\item UK\TeX\,\,  archive\qquad {\tt http://www.tex.ac.uk}
+\medskip
+\item Google search!
+\end{itemize}
+\medskip
+\item include packages with the 
+\textcolor{blue}{\texttt{\bs usepackage\{packagename\}}}
+command
+\end{itemize}
+\end{frame}
+\begin{frame}{Slides and presentations}
+\mynormal
+\medskip
+\begin{itemize}
+\item \textcolor{blue}{beamer} document class
+\bc
+{\tt \bs documentclass\{beamer\} }
+\ec
+\bc
+{\tt \bs begin\{frame\}...\bs end\{frame\}}
+\ec
+\pause
+\medskip
+\item slide style, colour etc.\ 
+can be specified using the \textcolor{blue}{\texttt{\bs theme}} and 
+\textcolor{blue}{\texttt{\bs colortheme}} commands. 
+\medskip
+\item use standard themes or create your own
+\medskip
+\item \textcolor{blue}{a0poster} document class for posters
+\medskip
+\item more information about these packages online
+\end{itemize}
+\end{frame}
+\begin{frame}{Support Material}
+
+Available from\\
+
+\bigskip
+
+\begin{tabbing}
+xxxxxxxxxxxxxxxxxxxxxxx\= \kill
+\texttt{https://alisonramage.github.io/latex\_course/}
+\end{tabbing}
+
+\bigskip
+\bigskip
+\bigskip
+
+\begin{tabbing}
+xxxxxxxxxxxxxxxxxxxxxxxxxxxx\= \kill
+\textcolor{blue}{$\bullet$} \lx notes \>  
+\texttt{LaTeXnotes.tex}\\
+\textcolor{blue}{$\bullet$} sample file \>  
+\texttt{wpdoc.tex}\\
+\textcolor{blue}{$\bullet$} sample figure \>  
+\texttt{fig1.png}\\
+\textcolor{blue}{$\bullet$} slides from this talk \>  
+\texttt{LaTeXslides.tex}\\
+\end{tabbing}
+\begin{flushright}
+\framebox{Exercises 6 and 7}
+\end{flushright}
+
+\end{frame}
+\end{document}
