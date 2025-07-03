@@ -1,0 +1,74 @@
+% This is the application Form.
+
+\submittedby{
+% Put your name here (upper and lower case).
+}
+
+\address{
+% Put your postal address here. Each
+% line should be terminated by a double slash: \\
+}
+
+\email{
+% Put your email address here.
+}
+
+\www{
+% Put a homepage address here, or leave it blank
+}
+
+\phone{
+% Put your phone number here.
+}
+
+\fax{
+% Put your fax number here.
+}
+
+\YearsSinceDegree{
+% Put the number of years since obtaining your highest degree here
+% (doctorate or lower, not habilitation or equivalent).
+}
+
+\timereq{
+% Put a number here, between 20 and 45, indicating the
+% number of minutes you would (ideally) like to have for your presentation.
+% This estimate should include 5-10 minutes of questions.
+% If selected for a plenary talk you may have less time than requested.
+% If you do not wish to give a talk enter 0 here.
+}
+
+\title{
+% Put the title of your paper here.
+% Use upper and lower case, beginning each "important" word
+% with an upper-case character.
+}
+
+\author{
+% Put the name of an author of the abstract here
+% (upper and lower case).
+% Repeat for more than one author.
+}
+
+\abstract
+% This section is strictly limited to 3 pages in length and brevity is
+% encouraged.
+% No graphics can be included and any personalized macros must be defined.
+% Include the abstract and bibliography for a talk you would
+% be willing to present.  You may use up to two of the pages
+% to announce other research results that might be of interest
+% to the attendees, but each attendee will be limited to one talk.
+% If you attend the Householder meeting, the abstract book will
+% contain all of this text.
+
+\additional
+% Include here any other information that you want
+% the Program Committee to consider.  If your work is not
+% well-known to each committee member, you might want to include
+% a brief biography, a list of recent publications, etc.
+% Please keep this section brief.  If you want to make
+% lengthy information (e.g., preprints) available to the
+% committee, just include pointers to an electronic site
+% (ftp, WWW, etc.).  The information in this section is
+% just for the committee members and will not be included in
+% the abstract book.

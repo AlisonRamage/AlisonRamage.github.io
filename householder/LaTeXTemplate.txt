@@ -1,0 +1,54 @@
+% Please run your submission with these commands to ensure
+% that they will go through LaTeX without problems.
+% Please *do not* include these commands in your submission.
+
+\documentclass[11pt]{article}
+
+\setlength{\textheight}{8in}
+\textwidth=159truemm
+\oddsidemargin=0truemm \evensidemargin=0truemm
+
+\parindent0pt\parskip1ex
+\newsavebox{\name}
+\newsavebox{\addr}
+\newsavebox{\eml}
+\newsavebox{\web}
+\newsavebox{\myti}
+\newsavebox{\ph}
+\newsavebox{\fx}
+\newsavebox{\years}
+\newcommand{\submittedby}[1]{\sbox{\name}{#1}}
+\newcommand{\address}[1]{\sbox{\addr}{\parbox[t]{3in}{#1}}}
+\newcommand{\email}[1]{\sbox{\eml}{{\tt #1}}}
+\newcommand{\www}[1]{\sbox{\web}{{\tt #1}}}
+\newcommand{\timereq}[1]{\sbox{\myti}{Time requested: #1}}
+\newcommand{\phone}[1]{\sbox{\ph}{#1}}
+\newcommand{\fax}[1]{\sbox{\fx}{#1}}
+\newcommand{\YearsSinceDegree}[1]{\sbox{\years}{#1 years since degree}}
+\renewcommand{\author}[1]{#1\\}
+\renewcommand{\title}[1]{
+\begin{tabular}{l}
+\usebox{\name} \\
+\usebox{\addr}
+\end{tabular}
+\hfill
+\begin{tabular}{r}
+\usebox{\myti} \\
+\usebox{\eml} \\
+\usebox{\web} \\
+tel: \usebox{\ph},
+fax: \usebox{\fx} \\
+\usebox{\years}
+\end{tabular}\\
+\begin{center}{\large #1}\smallskip\\
+}
+\renewcommand{\abstract}{\vspace*{1ex}
+\end{center}}
+\newcommand{\additional}{\newpage}
+
+\begin{document}
+
+% Your submission goes here
+% ...
+
+\end{document}

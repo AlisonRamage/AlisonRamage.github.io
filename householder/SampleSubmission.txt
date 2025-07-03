@@ -1,0 +1,38 @@
+\submittedby{Terra Cotta}
+
+\address{Institute for Unscientific Computing\\
+Bleaker and Bleaker St.\\
+East Piddling, Albasa
+}
+
+\email{cotta@rif.gov}
+
+\www{http://www.iuc.alb.com/\string~cotta/}
+
+\phone{310 405 2678}
+
+\fax{310 405 679}
+
+\YearsSinceDegree{9}
+
+\timereq{31.4159}
+
+\title{On Things of Little Interest: How to Compute Low Paying Annuities}
+
+\author{Terra Cotta}
+
+\author{Granite Sudley}
+
+\abstract
+\newcommand{\submarine}{\mbox{\Huge$\bigcirc$}}
+
+This talk concerns the matrix analysis of the spherical submarine
+pictured below.
+\[
+\submarine
+\]
+Immersion in this topic can be worthwhile.
+
+\additional
+
+Whatever.

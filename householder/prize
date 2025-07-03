@@ -1,0 +1,108 @@
+From MAILER-DAEMON Tue Jul  3 12:31:18 2001
+Date: Tue, 3 Jul 2001 12:31:18 +0100 (BST)
+From: Mail System Internal Data <MAILER-DAEMON@maths.strath.ac.uk>
+Subject: DON'T DELETE THIS MESSAGE -- FOLDER INTERNAL DATA
+X-IMAP: 0994159878 0000000000
+Status: RO
+
+This text is part of the internal format of your mail folder, and is not
+a real message.  It is created automatically by the mail system software.
+If deleted, important folder data will be lost, and it will be re-created
+with the data reset to initial values.
+
+From alison@maths.strath.ac.uk Tue Jul  3 11:08:59 2001 +0100
+Status: R
+X-Status: 
+X-Keywords:
+Return-Path: <higham@maths.man.ac.uk>
+Delivered-To: caas63@kelvin.maths.strath.ac.uk
+Received: (qmail 26348 invoked by alias); 3 Jul 2001 12:08:59 +0100
+Delivered-To: ar@maths.strath.ac.uk
+Received: (qmail 26346 invoked from network); 3 Jul 2001 12:08:59 +0100
+Received: from orkney.cc.strath.ac.uk (HELO mailrouter1.strath.ac.uk) (130.159.248.40)
+  by kelvin.maths.strath.ac.uk with SMTP; 3 Jul 2001 12:08:59 +0100
+Received: from [130.88.13.7] (helo=curlew.cs.man.ac.uk)
+	by mailrouter1.strath.ac.uk with esmtp (Exim 3.12 #2)
+	id 15HO2w-0007cr-00
+	for A.Ramage@strath.ac.uk; Tue, 03 Jul 2001 12:08:46 +0100
+Received: from vummath.ma.man.ac.uk ([130.88.16.53])
+	by curlew.cs.man.ac.uk with esmtp (Exim 2.05 #6)
+	id 15HO2e-000FsV-00; Tue, 3 Jul 2001 12:08:28 +0100
+Received: from victoria.ma.man.ac.uk (victoria [130.88.16.29])
+	by vummath.ma.man.ac.uk (8.11.3/8.11.3) with ESMTP id f63B8S108242;
+	Tue, 3 Jul 2001 12:08:28 +0100 (BST)
+Received: by victoria.ma.man.ac.uk (Linux Smail3.2.0.101 #1)
+	id m15HO2d-0002xwC; Tue, 3 Jul 2001 12:08:27 +0100 (BST)
+Message-Id: <m15HO2d-0002xwC@victoria.ma.man.ac.uk>
+Date: Tue, 3 Jul 2001 12:08:27 +0100 (BST)
+From: Nick Higham <higham@maths.man.ac.uk>
+To: elsner@mathematik.uni-bielefeld.de
+cc: A.Ramage@strath.ac.uk
+Subject: Householder Award
+
+Dear Ludwig,
+
+I just submitted this to NA-Digest and ILAS-NET and it will be added
+to the conference Web page.
+I'll get back to you shortly regarding sending the announcement elsewhere.
+
+---Nick
+
+HOUSEHOLDER AWARD XI
+
+Nominations are solicited for the Alston S. Householder Award XI
+(2002). The award will be presented to the author of the best
+dissertation in numerical algebra submitted by the recipient of a
+PhD earned between January 1, 1999, and December 31, 2001.
+
+The term numerical algebra is intended to describe those parts of
+mathematical research that have both algebraic aspects and numerical
+content or implications. Thus, for example, the term covers linear
+algebra that has numerical applications and the algebraic aspects of
+ordinary differential, partial differential, integral, and nonlinear
+equations.  To qualify, the dissertation must have been submitted to
+fulfill requirements for a degree at the level of a United States
+Ph.D.  Candidates from countries in which a formal dissertation is not
+normally written at that level may submit an equivalent piece of work.
+
+The Householder Award, given every three years, was established at the
+1969 Gatlinburg Symposium (now renamed the Householder Symposium) to
+recognize the outstanding contributions of Alston S. Householder,
+1904--1993, to numerical analysis and linear algebra.
+
+Entries will be assessed by an international committee consisting of
+James Demmel (University of California, Berkeley), Ludwig Elsner
+(University of Bielefeld), Volker Mehrmann (TU Berlin), Charles Van Loan
+(Cornell University) and Olof Widlund (Courant Institute, New York
+University).
+
+The candidate's sponsor (the supervisor of the candidate's research)
+should submit five copies of the dissertation (or qualifying work),
+together with an appraisal by the sponsor and at least one additional
+letter of recommendation supporting the nomination, by February 15, 2002, to
+
+Professor Ludwig Elsner
+Fakultaet fuer Mathematik
+Universitaet Bielefeld
+Postfach 10 01 31
+33501 Bielefeld
+Germany
+email: elsner@Mathematik.Uni-Bielefeld.DE
+
+The award will be presented at the Householder Symposium XV, to be
+held June 17-21, 2002 at the Peebles Hotel Hydro, Scotland
+(http://www.maths.strath.ac.uk/~matrix/).
+Candidates on the short list will receive invitations to the meeting.
+
+Previous Householder Award winners were F. Robert (Grenoble) in 1971,
+Ole Hald (New York University) in 1974, Daniel D. Warner (University
+of California, San Diego) in 1977, E. Marques de S{\'a} (Coimbra) and
+Paul Van Dooren (K. U.  Leuven) in 1981 (shared), Ralph Byers (Cornell
+University) and James M. Demmel (University of California, Berkeley)
+in 1984 (shared), Nicholas J. Higham (University of Manchester) in
+1987, Alan Edelman (Massachusetts Institute of Technology) and Maria
+Beth Ong (University of Washington) in 1990 (shared), Hong-Guo Xu
+(Fudan University) and Barry Smith (New York University) in 1993
+(shared), Ming Gu (Yale University) in 1996, and J\"org Liesen (Bielefeld)
+in 1999.
+
